@@ -100,6 +100,34 @@ const previewSoal1 = (param: ISoal1):string=>
 }
 
 const Soal1 = () => {
+
+  const previewSoal1_Revision = (param: ISoal1) =>
+  {
+    var strView = `
+    Nama : ${param.nama} 
+    Email : ${param.email} 
+    Telepon : ${param.telepon} 
+    Alamat : ${param.alamat} 
+    Hobi : ${param.hobi}`;
+
+    Alert.alert
+    (
+      'Preview Your Form Detail',
+      strView,
+      [
+        {text: 'OK', onPress: () => 
+          {
+            setNama(""); 
+            setEmail("");
+            setTelepon("");
+            setAlamat("");
+            setHobi("");
+          }
+        },
+      ], 
+      { cancelable: false }
+    )
+  }
   const isDarkMode = useColorScheme() === 'dark';
   const backgroundStyle = {
     backgroundColor: isDarkMode ? 'black' : 'white',
@@ -149,23 +177,24 @@ const Soal1 = () => {
       />
       <Button
         onPress={() => {
-          Alert.alert
-          (
-            'Preview Your Form',
-            previewSoal1({nama, email, telepon, alamat, hobi}),
-            [
-              {text: 'OK', onPress: () => 
-                {
-                  setNama(""); 
-                  setEmail("");
-                  setTelepon("");
-                  setAlamat("");
-                  setHobi("");
-                }
-              },
-            ], 
-            { cancelable: false }
-          )
+          // Alert.alert
+          // (
+          //   'Preview Your Form',
+          //   previewSoal1({nama, email, telepon, alamat, hobi}),
+          //   [
+          //     {text: 'OK', onPress: () => 
+          //       {
+          //         setNama(""); 
+          //         setEmail("");
+          //         setTelepon("");
+          //         setAlamat("");
+          //         setHobi("");
+          //       }
+          //     },
+          //   ], 
+          //   { cancelable: false }
+          // )
+          previewSoal1_Revision({nama, email, telepon, alamat, hobi});
           // Soal 1
           // Requirement:
           // - buat sebuah function yang apabila dipanggil
@@ -187,14 +216,14 @@ interface ISoal2 {
 }
 
 interface ISoal2_Value {
-  val1 : any;
-  val2 : any;
+  val1 : number;
+  val2 : number;
 }
 
 const calculateSoal2 = (param : ISoal2, param2 : ISoal2_Value)=> {
 
-  var numberVal1 = Number(param2.val1);
-  var numberVal2 = Number(param2.val2);
+  var numberVal1 = param2.val1;
+  var numberVal2 = param2.val2;
 
   var result = 0;
 
@@ -260,6 +289,8 @@ const Soal2 = (param: ISoal2) => {
       <Button
         onPress={() => 
           {
+            var numberInput1 = Number(input1);
+            var numberInput2 = Number(input2);
             calculateSoal2
             (
               {
@@ -281,12 +312,12 @@ const Soal2 = (param: ISoal2) => {
                     ], 
                     { cancelable: false }
                   )
-                },
+                }, // atau tinggal panggil aja param.onPress
                 tanda: param.tanda
               }, 
               { 
-                val1: input1, 
-                val2: input2
+                val1: numberInput1, 
+                val2: numberInput2
               }
             )
             // Soal 2
