@@ -87,18 +87,6 @@ interface ISoal1 {
   hobi : string | undefined;
 }
 
-const previewSoal1 = (param: ISoal1):string=>
-{
-  var strView = `
-  Nama : ${param.nama} 
-  Email : ${param.email} 
-  Telepon : ${param.telepon} 
-  Alamat : ${param.alamat} 
-  Hobi : ${param.hobi}`;
-
-  return strView;
-}
-
 const Soal1 = () => {
 
   const previewSoal1_Revision = (param: ISoal1) =>
@@ -220,34 +208,34 @@ interface ISoal2_Value {
   val2 : number;
 }
 
-const calculateSoal2 = (param : ISoal2, param2 : ISoal2_Value)=> {
 
-  var numberVal1 = param2.val1;
-  var numberVal2 = param2.val2;
-
-  var result = 0;
-
-  switch(param.jenis){
-    case 'penjumlahan':
-      result = numberVal1 + numberVal2;
-      break;
-    case 'pengurangan':
-      result = numberVal1 - numberVal2;
-      break;
-    case 'perkalian':
-      result = numberVal1 * numberVal2;
-      break;
-    case 'pembagian':
-      result = numberVal1 / numberVal2;
-      break;
-  }
-
-  param.onPress(result);
-  
-
-}
 
 const Soal2 = (param: ISoal2) => {
+  const calculateSoal2 = (param : ISoal2, param2 : ISoal2_Value)=> {
+
+    var numberVal1 = param2.val1;
+    var numberVal2 = param2.val2;
+  
+    var result = 0;
+  
+    switch(param.jenis){
+      case 'penjumlahan':
+        result = numberVal1 + numberVal2;
+        break;
+      case 'pengurangan':
+        result = numberVal1 - numberVal2;
+        break;
+      case 'perkalian':
+        result = numberVal1 * numberVal2;
+        break;
+      case 'pembagian':
+        result = numberVal1 / numberVal2;
+        break;
+    }
+  
+    param.onPress(result);
+  }
+  
   const isDarkMode = useColorScheme() === 'dark';
   const backgroundStyle = {
     backgroundColor: isDarkMode ? 'black' : 'white',
